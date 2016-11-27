@@ -1,0 +1,7 @@
+import api.Lugar
+
+model {
+	Lugar lugar
+}
+
+json tmpl.lugar(lugar)

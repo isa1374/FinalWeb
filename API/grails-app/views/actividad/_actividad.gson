@@ -1,0 +1,7 @@
+import api.Actividad
+
+model {
+	Actividad actividad
+}
+
+json g.render(actividad)

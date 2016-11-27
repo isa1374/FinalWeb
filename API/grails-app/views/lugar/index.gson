@@ -1,0 +1,8 @@
+import api.Lugar
+
+model {
+	Iterable<Lugar> lugarList
+}
+
+json tmpl.lugar(lugarList ?: [])
+

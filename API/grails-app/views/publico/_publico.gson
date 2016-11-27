@@ -1,0 +1,7 @@
+import api.Publico
+
+model {
+	Publico publico
+}
+
+json g.render(publico)

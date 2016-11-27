@@ -1,0 +1,8 @@
+import api.Actividad
+
+model {
+	Iterable<Actividad> actividadList
+}
+
+json tmpl.actividad(actividadList ?: [])
+

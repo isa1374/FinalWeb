@@ -1,0 +1,8 @@
+import api.Publico
+
+model {
+	Iterable<Publico> publicoList
+}
+
+json tmpl.publico(publicoList ?: [])
+

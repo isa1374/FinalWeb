@@ -1,0 +1,8 @@
+import api.Tipo
+
+model {
+	Iterable<Tipo> tipoList
+}
+
+json tmpl.tipo(tipoList ?: [])
+

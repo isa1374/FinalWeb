@@ -1,0 +1,8 @@
+import api.Programa
+
+model {
+	Iterable<Programa> programaList
+}
+
+json tmpl.programa(programaList ?: [])
+

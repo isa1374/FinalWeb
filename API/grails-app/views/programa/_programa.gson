@@ -1,0 +1,7 @@
+import api.Programa
+
+model {
+	Programa programa
+}
+
+json g.render(programa)
