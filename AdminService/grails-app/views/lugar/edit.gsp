@@ -14,7 +14,7 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="edit-lugar" class="content scaffold-edit" role="main">
+        <div id="edit-lugar" class="content scaffold-edit lugar-s" role="main">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
@@ -29,7 +29,12 @@
             <g:form resource="${this.lugar}" method="PUT">
                 <g:hiddenField name="version" value="${this.lugar?.version}" />
                 <fieldset class="form">
-                    <f:all bean="lugar"/>
+                   <label>Nombre</label>  <g:textField name= "nombre" id="nombre" value="${lugar.nombre}" class="form-control"/>
+                  <br>
+                    <label>Municipio</label>  <g:textField name= "municipio" id="municipio" value="${lugar.municipio}" class="form-control"/>
+                   <br>
+                    <label>Dirección</label>  <g:textField name= "direccion" id="direccion" value="${lugar.direccion}" class="form-control"/>
+                    <br>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

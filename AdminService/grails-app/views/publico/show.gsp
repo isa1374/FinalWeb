@@ -14,12 +14,16 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="show-publico" class="content scaffold-show" role="main">
+        <div id="show-publico" class="content scaffold-show pub-s" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="publico" />
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Nombre</label></div>
+                <div class="col-md-4">${publico.nombre}</div>
+            </div>
             <g:form resource="${this.publico}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.publico}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

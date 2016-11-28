@@ -1,3 +1,7 @@
+<%@ page import="adminservice.Lugar" %>
+<%@ page import="adminservice.Tipo" %>
+<%@ page import="adminservice.Publico" %>
+<%@ page import="adminservice.Programa" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +18,7 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="edit-actividad" class="content scaffold-edit" role="main">
+        <div id="edit-actividad" class="content scaffold-edit actividad-s" role="main">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
@@ -29,7 +33,18 @@
             <g:form resource="${this.actividad}" method="PUT">
                 <g:hiddenField name="version" value="${this.actividad?.version}" />
                 <fieldset class="form">
-                    <f:all bean="actividad"/>
+                    <label>Nombre</label>  <g:textField name= "nombre" id="nombre" value="${actividad.nombre}" class="form-control"/>
+                    <br>
+                    <label>Fecha</label>  <g:textField name="fecha" id="fecha" value="${actividad.fecha}" class="form-control"/>
+                    <br>
+                    <label>Horario</label><g:textField name="horario" id="horario" value="${actividad.horario}" class="form-control"/>
+                    <br>
+                    <label>Activo</label><g:checkBox  name="activo" value="${actividad?.activo}"/>
+                    <br>
+                   <label>Programa</label> <g:select class="sel form-control" name="programa" from ="${Programa.list()}"  optionKey="id" optionValue="nombre" />
+                   <label>Tipo</label> <g:select class="sel form-control" name="tipo" from ="${Tipo.list()}"  optionKey="id" optionValue="nombre"/>
+                    <label>Público</label> <g:select class="sel form-control" name="publico" from ="${Publico.list()}"  optionKey="id" optionValue="nombre"/>
+                    <label>Lugar</label> <g:select class="sel form-control" name="lugar" from ="${Lugar.list()}"  optionKey="id" optionValue="nombre"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

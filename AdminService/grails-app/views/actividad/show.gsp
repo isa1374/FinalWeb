@@ -14,12 +14,54 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="show-actividad" class="content scaffold-show" role="main">
+        <div id="show-actividad" class="content scaffold-show actividad-s" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="actividad" />
+           <g:if test="${flash.message}">
+            <div class="message" role="status">${flash.message}</div>
+            </g:if>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Nombre</label></div>
+                <div class="col-md-4">${actividad.nombre}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Fecha</label></div>
+                <div class="col-md-4">${actividad.fecha}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Horario</label></div>
+                <div class="col-md-4">${actividad.horario}</div>
+            </div>
+            <div class="row">
+                 <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Activo</label></div>
+                <div class="col-md-4">${actividad.activo}</div>
+            </div>
+            <div class="row">
+                 <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Programa</label></div>
+                <div class="col-md-4">${actividad.programa.nombre}</div>
+            </div>
+             <div class="row">
+                 <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Tipo</label></div>
+                <div class="col-md-4">${actividad.tipo.nombre}</div>
+            </div>
+             <div class="row">
+                 <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Lugar</label></div>
+                <div class="col-md-4">${actividad.lugar.nombre}</div>
+            </div>
+            <div class="row">
+                 <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Público</label></div>
+                <div class="col-md-4">${actividad.publico.nombre}</div>
+            </div>
             <g:form resource="${this.actividad}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.actividad}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

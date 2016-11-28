@@ -11,10 +11,6 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
-    background-color: #ddd;
-    background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
-    background-image: linear-gradient(top, #aaa, #ddd);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
     background-repeat: no-repeat;
     height: 100%;
@@ -25,7 +21,7 @@ html {
 }
 
 html.no-cssgradients {
-    background-color: #aaa;
+    background-color: #fff;
 }
 
 html * {
@@ -33,16 +29,9 @@ html * {
 }
 
 body {
-    background: #ffffff;
-    color: #333333;
+    background: #D6C29D;
+    color: #644870;
     overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
-    -moz-box-shadow: 0 0 0.3em #4D8618;
-    -webkit-box-shadow: 0 0 0.3em #4D8618;
-    box-shadow: 0 0 0.3em #4D8618;
-}
-
-#grailsLogo {
-    background-color: #abbf78;
 }
 
 a:hover, a:active {
@@ -110,8 +99,8 @@ img {
 
 /* NAVIGATION MENU */
 
-.nav {
-    zoom: 1;
+.actividad-nav {
+    background: #29767e;
 }
 
 .nav ul {
@@ -498,8 +487,11 @@ th:hover, tr:hover {
     -moz-box-shadow: 0 0 3px 1px #aaaaaa;
     -webkit-box-shadow: 0 0 3px 1px #aaaaaa;
     box-shadow: 0 0 3px 1px #aaaaaa;
-    margin: 0.1em 0 0 0;
     border: none;
+    position:relative;
+    margin-top:5%;
+    bottom:5vmin;
+    width:98%;
 }
 
 .buttons input,
@@ -572,3 +564,91 @@ img.grails-logo {
     height:340px;
     margin-top:-10px;
 }
+
+.mainB {
+    padding-top:2.5%;
+    padding-bottom:2.5%;
+    padding-left: 1%;
+    margin-bottom: 2%;
+}
+.mainB:nth-child(1) {
+    background: #29767e;
+}
+.mainB:nth-child(2) {
+    background: #10968d;
+}
+.mainB:nth-child(3) {
+    background: #644870;
+}
+.mainB:nth-child(4) {
+    background:  #87123c;
+}
+.mainB:nth-child(5) {
+    background:  #ca5290;
+}
+.mainB a{
+    color:white;
+}
+
+#create-actividad {
+    background: #10968d;
+    color:white;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.sel {
+    width:30%;
+}
+
+.actividad-s{
+    background: #29767e;
+    margin-top: 1%;
+    padding-top: 0.5%;
+    min-height:80vmin;
+    color:white;
+}
+.actividad-s .row{
+   padding-bottom:2%;
+}
+.lugar-s{
+    background: #10968d;
+    margin-top: 1%;
+    padding-top: 0.5%;
+    min-height:80vmin;
+    color:white;
+}
+.lugar-s .row{
+   padding-bottom:2%;
+}
+.prog-s{
+    background: #644870;
+    margin-top: 1%;
+    padding-top: 0.5%;
+    min-height:80vmin;
+    color:white;
+}
+.prog-s .row{
+   padding-bottom:2%;
+}
+.pub-s{
+    background: #87123c;
+    margin-top: 1%;
+    padding-top: 0.5%;
+    min-height:80vmin;
+    color:white;
+}
+.pub-s .row{
+   padding-bottom:2%;
+}
+.tipo-s{
+    background: #ca5290;
+    margin-top: 1%;
+    padding-top: 0.5%;
+    min-height:80vmin;
+    color:white;
+}
+.tipo-s .row{
+   padding-bottom:2%;
+}
+

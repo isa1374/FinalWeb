@@ -14,12 +14,26 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="show-lugar" class="content scaffold-show" role="main">
+        <div id="show-lugar" class="content scaffold-show lugar-s" role="main">
             <h1><g:message code="default.show.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="lugar" />
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Nombre</label></div>
+                <div class="col-md-4">${lugar.nombre}</div>
+            </div>
+             <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Municipio</label></div>
+                <div class="col-md-4">${lugar.municipio}</div>
+            </div>
+             <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-1"><label>Dirección</label></div>
+                <div class="col-md-4">${lugar.direccion}</div>
+            </div>
             <g:form resource="${this.lugar}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.lugar}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

@@ -13,13 +13,15 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="list-actividad" class="content scaffold-list" role="main">
+        <div id="list-actividad" class="content scaffold-list actividad-s" role="main">
+            <div class=container>
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             
-            <table class="table table-condensed">
+            <table class="table table-condensed ">
              <thead>
                 <tr>
                      <th>ID</th>
@@ -42,15 +44,10 @@
                 <td>${actividad.tipo.nombre}</td>
                 <td>${actividad.publico.nombre}</td>
                 <td>${actividad.lugar.nombre}</td>
-               
                 </tr>
                 </g:each>
-
             </table>
-
-            <div class="pagination">
-                <g:paginate total="${actividadCount ?: 0}" />
-            </div>
+        </div>
         </div>
     </body>
 </html>

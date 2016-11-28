@@ -13,16 +13,24 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="list-publico" class="content scaffold-list" role="main">
+        <div id="list-publico" class="content scaffold-list pub-s" role="main">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${publicoList}" />
-
-            <div class="pagination">
-                <g:paginate total="${publicoCount ?: 0}" />
-            </div>
+            <div class="container">
+            <table class="table table-condensed ">
+             <thead>
+                <tr>
+                     <th>Nombre</th>
+                </tr>
+                </thead>
+                <g:each var="prog" in="${publicoList}">
+                <tr>
+                <td>${prog.nombre}</td>
+                </g:each>
+            </table>
+                </div>
         </div>
     </body>
 </html>

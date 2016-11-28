@@ -14,7 +14,7 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="edit-programa" class="content scaffold-edit" role="main">
+        <div id="edit-programa" class="content scaffold-edit prog-s" role="main">
             <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
@@ -29,7 +29,7 @@
             <g:form resource="${this.programa}" method="PUT">
                 <g:hiddenField name="version" value="${this.programa?.version}" />
                 <fieldset class="form">
-                    <f:all bean="programa"/>
+                   <label>Nombre</label>  <g:textField name= "nombre" id="nombre" value="${programa.nombre}" class="form-control"/>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />

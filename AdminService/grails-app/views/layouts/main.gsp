@@ -13,13 +13,12 @@
     <g:layoutHead/>
 </head>
 <body>
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="navbar  navbar-static-top" role="navigation">
         <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4"><div class="col-md-5"></div><div class="col-md-7"><h1>Sistema de administración de actividades</h1></div></div>
-            <div class="col-md-4"></div>
+            <div class="col-md-1"></div>
+            <div class="col-md-8"><div class="col-md-5"></div><div class="col-md-7"><h1>Sistema de administración de actividades</h1></div></div>
+            <div class="col-md-2"></div>
         </div>
-        
     </div>
     <g:layoutBody/>
     <asset:javascript src="application.js"/>

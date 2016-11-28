@@ -7,17 +7,12 @@
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
-    <content tag="nav">
-    </content>
-
-    <div id="content" role="main">
-        <ul>
+    <div id="content" role="main" class="container">
             <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                <li class="controller">
+                <div class="mainB">
                     <g:link controller="${c.logicalPropertyName}">${c.fullName.substring(13)}</g:link>
-                </li>
+                </div>
             </g:each>
-        </ul>
     </div>
 </body>
 </html>

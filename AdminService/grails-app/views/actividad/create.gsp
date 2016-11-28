@@ -9,7 +9,7 @@
         <g:set var="entityName" value="${message(code: 'actividad.label', default: 'Actividad')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
-    <body>
+    <body >
         <a href="#create-actividad" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
@@ -17,7 +17,7 @@
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="create-actividad" class="content scaffold-create" role="main">
+        <div id="edit" class="content scaffold-create actvidad-nav actividad-s" role="main">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
@@ -29,18 +29,22 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form action="save">
+            <g:form action="save" class="container">
                 <fieldset class="form">
                     <label>Nombre</label>  <g:textField name= "nombre" id="nombre" value="${actividad.nombre}" class="form-control"/>
+                    <br>
                     <label>Fecha</label>  <g:textField name="fecha" id="fecha" value="${actividad.fecha}" class="form-control"/>
+                    <br>
                     <label>Horario</label><g:textField name="horario" id="horario" value="${actividad.horario}" class="form-control"/>
+                    <br>
                     <label>Activo</label><g:checkBox  name="activo" value="${actividad?.activo}"/>
-                   <label>Programa</label> <g:select class="sel" name="programa" from ="${Programa.list()}"  optionKey="id" optionValue="nombre"/>
-                   <label>Tipo</label> <g:select class="sel" name="tipo" from ="${Tipo.list()}"  optionKey="id" optionValue="nombre"/>
-                    <label>Público</label> <g:select class="sel" name="publico" from ="${Publico.list()}"  optionKey="id" optionValue="nombre"/>
-                    <label>Lugar</label> <g:select class="sel" name="lugar" from ="${Lugar.list()}"  optionKey="id" optionValue="nombre"/>
+                    <br>
+                   <label>Programa</label> <g:select class="sel form-control" name="programa" from ="${Programa.list()}"  optionKey="id" optionValue="nombre" />
+                   <label>Tipo</label> <g:select class="sel form-control" name="tipo" from ="${Tipo.list()}"  optionKey="id" optionValue="nombre"/>
+                    <label>Público</label> <g:select class="sel form-control" name="publico" from ="${Publico.list()}"  optionKey="id" optionValue="nombre"/>
+                    <label>Lugar</label> <g:select class="sel form-control" name="lugar" from ="${Lugar.list()}"  optionKey="id" optionValue="nombre"/>
                 </fieldset>
-                <fieldset class="buttons">
+                <fieldset class="buttons ">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>
             </g:form>

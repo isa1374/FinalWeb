@@ -13,7 +13,7 @@
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
-        <div id="create-lugar" class="content scaffold-create" role="main">
+        <div id="create-lugar" class="content scaffold-create lugar-s" role="main">
             <h1><g:message code="default.create.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
@@ -27,7 +27,12 @@
             </g:hasErrors>
             <g:form action="save">
                 <fieldset class="form">
-                    <f:all bean="lugar"/>
+                   <label>Nombre</label>  <g:textField name= "nombre" id="nombre" value="${lugar.nombre}" class="form-control"/>
+                  <br>
+                    <label>Municipio</label>  <g:textField name= "municipio" id="municipio" value="${lugar.municipio}" class="form-control"/>
+                   <br>
+                    <label>Dirección</label>  <g:textField name= "direccion" id="direccion" value="${lugar.direccion}" class="form-control"/>
+                    <br>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
