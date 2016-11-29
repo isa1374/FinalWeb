@@ -1,4 +1,4 @@
-var svg=d3.select("body")
+var svg=d3.select(".main")
     .append("svg")
     .style("width","100%");
 
