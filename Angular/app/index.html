@@ -1,7 +1,6 @@
 <!--
 Carla Lorena Flores Subias A01331363
 Isabel García Pérez A01331405
-
 -->
 <!doctype html>
 <html ng-app="cultura">
@@ -94,13 +93,6 @@ Isabel García Pérez A01331405
       }, false);
       </script>
   </head>
-    <style>
-      svg {
-        height: 500px;
-        width: 500px;
-        border: 1px solid lightgray;
-      }
-    </style>
     <body ng-controller="culturaController">
       <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -110,6 +102,7 @@ Isabel García Pérez A01331405
             <ul class="nav navbar-nav">
               <li id="homeb"><a href="#" onclick="view('home')">Home</a></li>
               <li id="catb"><a href="#" onclick="view('catalogo')">Catálogo</a></li> 
+              <li id="bolb"><a href="#" onclick="view('bolitas')">D3</a></li> 
             </ul>
           </div>
         </nav>
@@ -118,7 +111,7 @@ Isabel García Pérez A01331405
         <div id="video"></div>
         <div id="test1"></div>
       </div>
-      <div id="viz">
+      <div id="viz" class="display">
         <svg class="main"></svg>
       </div>
       <div id="catalogo" class="display">
@@ -330,6 +323,7 @@ Isabel García Pérez A01331405
               $("#home").css("visibility","visible");
               $('#homeb').css("background","#ca5290");
               $('#catb').css("background","#29767e");
+              $('#bolb').css("background","#29767e");
               $("#catalogo").css("visibility","hidden");
               $("bellasA").css("visibility","hidden");
               $("castillo").css("visibility","hidden");
@@ -337,18 +331,35 @@ Isabel García Pérez A01331405
               $("#antro").css("visibility","hidden");
               $("#danza").css("visibility","hidden");
               $("#musical").css("visibility","hidden");
-              
+              $("#viz").css("visibility","hidden");
           }else{
-             $("#home").css("visibility","hidden");
-             $('#catb').css("background","#ca5290");
-            $('#homeb').css("background","#29767e");
-             $("#catalogo").css("visibility","visible");
-              $("#bellasA").css("visibility","hidden");
-              $("#castillo").css("visibility","hidden");
-              $("#soumaya").css("visibility","hidden");
-          $("#antro").css("visibility","hidden");
-          $("#danza").css("visibility","hidden");
-               $("#musical").css("visibility","hidden");
+            if(s=='bolitas'){
+                $("#home").css("visibility","hidden");
+                $('#bolb').css("background","#ca5290");
+                $('#catb').css("background","#29767e");
+                $('#homeb').css("background","#29767e");
+                $("#catalogo").css("visibility","hidden");
+                $("#bellasA").css("visibility","hidden");
+                $("#castillo").css("visibility","hidden");
+                $("#soumaya").css("visibility","hidden");
+                $("#antro").css("visibility","hidden");
+                $("#danza").css("visibility","hidden");
+                $("#musical").css("visibility","hidden");
+                $("#viz").css("visibility","visible");
+            }else{
+                $("#home").css("visibility","hidden");
+                $('#catb').css("background","#ca5290");
+                $('#homeb').css("background","#29767e");
+                $('#bolb').css("background","#29767e");
+                $("#catalogo").css("visibility","visible");
+                $("#bellasA").css("visibility","hidden");
+                $("#castillo").css("visibility","hidden");
+                $("#soumaya").css("visibility","hidden");
+                $("#antro").css("visibility","hidden");
+                $("#danza").css("visibility","hidden");
+                $("#musical").css("visibility","hidden");
+                $("#viz").css("visibility","hidden");
+            }
           }
       }
       function bellas(){
@@ -362,6 +373,7 @@ Isabel García Pérez A01331405
           $("#antro").css("visibility","hidden");
           $("#danza").css("visibility","hidden");
           $("#musical").css("visibility","hidden");
+          $("#viz").css("visibility","hidden");
       }
       function castillo(){
           $("#home").css("visibility","hidden");
@@ -374,6 +386,7 @@ Isabel García Pérez A01331405
           $("#antro").css("visibility","hidden");
           $("#danza").css("visibility","hidden");
           $("#musical").css("visibility","hidden");
+          $("#viz").css("visibility","hidden");
       }
       function soumaya(){
           $("#home").css("visibility","hidden");
@@ -386,6 +399,7 @@ Isabel García Pérez A01331405
           $("#antro").css("visibility","hidden");
           $("#danza").css("visibility","hidden");
           $("#musical").css("visibility","hidden");
+          $("#viz").css("visibility","hidden");
       }
       function antro(){
           $("#home").css("visibility","hidden");
@@ -398,6 +412,7 @@ Isabel García Pérez A01331405
           $("#antro").css("visibility","visible");
           $("#danza").css("visibility","hidden");
           $("#musical").css("visibility","hidden");
+          $("#viz").css("visibility","hidden");
       }
       function danza(){
           $("#home").css("visibility","hidden");
@@ -410,6 +425,7 @@ Isabel García Pérez A01331405
           $("#antro").css("visibility","hidden");
           $("#danza").css("visibility","visible");
           $("#musical").css("visibility","hidden");
+          $("#viz").css("visibility","hidden");
       }
       function musical(){
           $("#home").css("visibility","hidden");
@@ -422,6 +438,7 @@ Isabel García Pérez A01331405
           $("#antro").css("visibility","hidden");
           $("#danza").css("visibility","hidden");
           $("#musical").css("visibility","visible");
+          $("#viz").css("visibility","hidden");
       }
       
       /*$("#search").click(function(){
@@ -444,28 +461,21 @@ Isabel García Pérez A01331405
         }
       });*/
     </script>
-    <footer>
         <script>
         var randomPoints = d3.range(500).map(function () {
           return {value: Math.random()}
         })
-
         var networkCenter = d3.forceCenter().x(250).y(250);
-
         var forceX = d3.forceX(function (d) {return 100})
             .strength(0.1)
-
          var forceY = d3.forceY(function (d) {return d.value * 500})
             .strength(1)
-
         var collide = d3.bboxCollide(function (d,i) {
             return [[-d.value * 10, -d.value * 5],[d.value * 10, d.value * 5]]
           })
           .strength(1)
           .iterations(2)
-
         var color = d3.scaleOrdinal(d3.schemeCategory20b)
-
           var force = d3.forceSimulation(randomPoints)
             .velocityDecay(0.6)
             .force("center", networkCenter)
@@ -473,7 +483,6 @@ Isabel García Pérez A01331405
             .force("y", forceY)
             .force("collide", collide)
             .on("tick", updateNetwork);
-
           var nodeEnter = d3.select("svg.main")
           .append("g")
           .selectAll("g.node")
@@ -481,7 +490,6 @@ Isabel García Pérez A01331405
           .enter()
           .append("g")
           .attr("class", "node")
-
           nodeEnter.append("rect")
             .attr("class", "base")
             .style("fill-opacity", 0.75)
@@ -493,11 +501,9 @@ Isabel García Pérez A01331405
             .style("height", function (d) {return d.value * 10})
             .style("x", function (d) {return -d.value * 10})
             .style("y", function (d) {return -d.value * 5})
-
           function updateNetwork() {
             d3.select("svg.main").selectAll("g.node")
               .attr("transform", function (d) {return "translate(" + d.x + "," + d.y + ")"})
           }
-</script>
-    </footer>
+        </script>
 </html>

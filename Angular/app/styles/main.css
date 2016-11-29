@@ -4,7 +4,14 @@ body{
     background: #D6C29D;
     
 }
-
+svg {
+    position: absolute;
+    top:15vh;;
+    left:15vmax;
+    height:70vmin;
+    width: 70vmin;
+    border: 1px solid lightgray;
+}
 #catalogo {
     visibility: hidden;
 }
@@ -15,7 +22,7 @@ body{
 #homeb{
     background: #ca5290;
 }
-#homeb a,#catb a{
+#homeb a,#catb a, #bolb a {
     color:white;
 }
 #hea a{
@@ -66,9 +73,13 @@ body{
 }
 .display{
     position: absolute;
-    top:10%;
+    top:10vh;
     left:15vmax;
     width:70vmax;
     height:70vmin;
     visibility: hidden;
+}
+#viz{
+    position: absolute;
+    top:0%;
 }
