@@ -118,6 +118,8 @@ Isabel García Pérez A01331405
       </div>
       <div id="viz" class="display">
         <svg class="main"></svg>
+        <svg class="main2"></svg>
+        <button id="graph" class="btn b2 b">Cambiar gráfica</button>
       </div>
       <div id="catalogo" class="display">
             <div ng-repeat='item in actividades'>
@@ -327,14 +329,14 @@ Isabel García Pérez A01331405
     <script>
       var collapse=true;
       function view(s){
-          if(s=="home"){
+          if(s=='home'){
               $("#home").css("visibility","visible");
               $('#homeb').css("background","#ca5290");
               $('#catb').css("background","#29767e");
               $('#bolb').css("background","#29767e");
               $("#catalogo").css("visibility","hidden");
-              $("bellasA").css("visibility","hidden");
-              $("castillo").css("visibility","hidden");
+              $("#bellasA").css("visibility","hidden");
+              $("#castillo").css("visibility","hidden");
               $("#soumaya").css("visibility","hidden");
               $("#antro").css("visibility","hidden");
               $("#danza").css("visibility","hidden");
@@ -470,48 +472,133 @@ Isabel García Pérez A01331405
       });*/
     </script>
         <script>
-        var randomPoints = d3.range(500).map(function () {
-          return {value: Math.random()}
-        })
-        var networkCenter = d3.forceCenter().x(250).y(250);
-        var forceX = d3.forceX(function (d) {return 100})
-            .strength(0.1)
-         var forceY = d3.forceY(function (d) {return d.value * 500})
-            .strength(1)
-        var collide = d3.bboxCollide(function (d,i) {
-            return [[-d.value * 10, -d.value * 5],[d.value * 10, d.value * 5]]
-          })
-          .strength(1)
-          .iterations(2)
-        var color = d3.scaleOrdinal(d3.schemeCategory20b)
-          var force = d3.forceSimulation(randomPoints)
-            .velocityDecay(0.6)
-            .force("center", networkCenter)
-            .force("x", forceX)
-            .force("y", forceY)
-            .force("collide", collide)
-            .on("tick", updateNetwork);
-          var nodeEnter = d3.select("svg.main")
-          .append("g")
-          .selectAll("g.node")
-          .data(randomPoints)
-          .enter()
-          .append("g")
-          .attr("class", "node")
-          nodeEnter.append("rect")
-            .attr("class", "base")
-            .style("fill-opacity", 0.75)
-            .style("stroke-width", 1)
-            .style("stroke-opacity", 0.5)
-            .style("stroke", function (d, i) {return d3.color(color(i)).darker(2)})
-            .style("fill", function (d, i) {return d3.color(color(i)).brighter(2)})
-            .style("width", function (d) {return d.value * 20})
-            .style("height", function (d) {return d.value * 10})
-            .style("x", function (d) {return -d.value * 10})
-            .style("y", function (d) {return -d.value * 5})
-          function updateNetwork() {
-            d3.select("svg.main").selectAll("g.node")
-              .attr("transform", function (d) {return "translate(" + d.x + "," + d.y + ")"})
-          }
+        var sheller=true;
+        
+            $("#graph").click(function(){
+            if(sheller){
+            $(".main2").html("");
+            var width = 960,
+            height = 500;
+            var nodes = d3.range(200).map(function() { return {radius: Math.random() * 12 + 4}; }),
+            root = nodes[0],
+            color = d3.scale.category10();
+
+             root.radius = 0;
+             root.fixed = true;
+
+             var force = d3.layout.force()
+             .gravity(0.05)
+             .charge(function(d, i) { return i ? 0 : -2000; })
+             .nodes(nodes)
+             .size([width, height]);
+
+             force.start();
+            
+             var svg = d3.select(".main2").append("svg")
+             .attr("width", width)
+             .attr("height", height);
+
+             svg.selectAll("circle")
+             .data(nodes.slice(1))
+             .enter().append("circle")
+             .attr("r", function(d) { return d.radius; })
+             .style("fill", function(d, i) { return color(i % 3); });
+
+             force.on("tick", function(e) {
+             var q = d3.geom.quadtree(nodes),
+             i = 0,
+             n = nodes.length;
+
+             while (++i < n) q.visit(collide(nodes[i]));
+
+             svg.selectAll("circle")
+             .attr("cx", function(d) { return d.x; })
+             .attr("cy", function(d) { return d.y; });
+             });
+
+             svg.on("mousemove", function() {
+             var p1 = d3.mouse(this);
+             root.px = p1[0];
+             root.py = p1[1];
+             force.resume();
+             });
+
+             function collide(node) {
+                 var r = node.radius + 16,
+                 nx1 = node.x - r,
+                 nx2 = node.x + r,
+                 ny1 = node.y - r,
+                 ny2 = node.y + r;
+                 return function(quad, x1, y1, x2, y2) {
+                 if (quad.point && (quad.point !== node)) {
+                 var x = node.x - quad.point.x,
+                 y = node.y - quad.point.y,
+                 l = Math.sqrt(x * x + y * y),
+                 r = node.radius + quad.point.radius;
+                 if (l < r) {
+                 l = (l - r) / l * .5;
+                 node.x -= x *= l;
+                 node.y -= y *= l;
+                 quad.point.x += x;
+                 quad.point.y += y;
+                 }
+                 }
+                 return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+                 };
+             }
+            $(".main").css("visibility","hidden");
+            $(".main2").css("visibility","visible");
+            sheller=false;
+            }else{
+               $(".main").html("");
+                var svg=d3.select(".main")
+                .append("svg")
+                .style("width","100%");
+
+            var nodes = d3.range(400).map(function(d,i) {
+              var radius = Math.random()*10+5 + (i<0 ? 55 : 0),
+                  x=Math.random()*300+radius,
+                  y=Math.random()*300+radius;
+              return {radius:radius,mass:radius,x:x,y:y,px:x+Math.random()*2,py:y+Math.random()*2};
+            });
+
+            var ball = svg.selectAll(".ball")
+              .data(nodes)
+              .enter()
+                .append("circle")
+                .attr("class","ball")
+                .attr("r",function(d) { return d.radius; });
+
+            function redraw() {
+              ball.attr("cx",function(d) { return d.x; });
+              ball.attr("cy",function(d) { return d.y; });
+              force.resume();
+            }
+
+            var force = d3.layout.force()
+                .friction(1)
+                .nodes(nodes)
+                .charge(0).gravity(0)
+                .on("tick.redraw",redraw)
+                .start();
+
+            ball.call(force.drag);
+            d3.z.collide(force);
+
+
+            function setBoundary() {
+              var w = svg.node().offsetWidth,
+                  h = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)-20;
+              svg.attr("height",h);
+              d3.z.deflect(force,0,0,w,h);
+            }
+            setBoundary();
+            window.onresize = setBoundary;
+               $(".main").css("visibility","visible");
+               $(".main2").css("visibility","hidden"); 
+            sheller=true;
+            }
+                
+          });
         </script>
 </html>
