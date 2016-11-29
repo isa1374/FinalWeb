@@ -2,59 +2,162 @@
 Carla Lorena Flores Subias A01331363
 Isabel García Pérez A01331405
 
-Calculadora dinámica de monedas: Deberás realizar una página donde se pueda convertir de una moneda a otra y mostrar únicamente las monedas seleccionadas de una lista. Los valores de conversión se tomaran de un JSON (propuesto por el estudiante) donde se tendrá como base de la moneda el USD (dollar americano) y la conversión a todas las monedas. La calculadora estará hecha con bootstrap y angular. Y deberá convertir de cualquier moneda a cualquier moneda.
 -->
-<!Doctype html>
-<html ng-app="primerApp">
+<!doctype html>
+<html ng-app="cultura">
   <head>
     <meta charset="utf-8">
-    <title>Convertidor de Divisas</title>
+    <title>Cultura CDMX</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/bootstrap.css">
     <link rel="stylesheet" href="styles/bootstrap-select.css">
     <link rel="stylesheet" href="styles/main.css">
-    <script src="scripts/angular.js"></script> 
+    <script src="scripts/angular.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/jquery.js"></script>
     <script src="scripts/bootstrap.js"></script>
     <script src="scripts/bootstrap-select.js"></script>
-      
+    <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+     <script>
+     document.addEventListener("DOMContentLoaded", function () {
+         // Create a popcorn instance by calling the Vimeo player plugin
+         var pop = Popcorn.vimeo(
+         '#video',
+         'https://vimeo.com/193426204',{
+            pauseOnLinkClicked: true
+        });
+  
+        pop.code({
+            start:4,
+            end:10,
+            onStart: function( options ) {
+              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b5'>Actividades Bellas Artes</button>";
+            },
+            onEnd: function( options ) {
+             document.getElementById( "test1" ).innerHTML = "";
+           }
+        });
+        pop.code({
+            start: 10,
+            end:17,
+            onStart: function( options ) {
+              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b1'>Actividades Castillo de Chapultepec</button>";
+            },
+            onEnd: function( options ) {
+             document.getElementById( "test1" ).innerHTML = "";
+           }
+        });
+        pop.code({
+            start: 17,
+            end:25,
+            onStart: function( options ) {
+              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b2'>Actividades musicales</button>";
+            },
+            onEnd: function( options ) {
+             document.getElementById( "test1" ).innerHTML = "";
+           }
+        });
+        pop.code({
+            start: 25,
+            end:32,
+            onStart: function( options ) {
+              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b3'>Actividades Museo Soumaya</button>";
+            },
+            onEnd: function( options ) {
+             document.getElementById( "test1" ).innerHTML = "";
+           }
+        });
+        pop.code({
+            start:32,
+            end:43,
+            onStart: function( options ) {
+              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b4'>Actividades Museo de Antropología</button>";
+            },
+            onEnd: function( options ) {
+             document.getElementById( "test1" ).innerHTML = "";
+           }
+        });
+        pop.code({
+            start:43,
+            end:60,
+            onStart: function( options ) {
+              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b5'>Actividades danza</button>";
+            },
+            onEnd: function( options ) {
+             document.getElementById( "test1" ).innerHTML="<button class='btn mainb b5'>Actividades danza</button>";
+           }
+        });
+        pop.play();
+      }, false);
+      </script>
   </head>
-  <body ng-controller="primerAppController">
-    <nav class="navbar">
-            <h3>Convertidor de divisas</h3>
-    </nav>
-      <div class="row jumbotron">
-        <div class="col-md-4"></div>
-          <div class="col-md-4"><input type="number" id="valor" ng-model="valor" ng-change="calcular(valor,original)">
-            <select ng-model="original" ng-init="original='USD'" class="selectpicker" ng-change="calcular(valor,original)">
-            <option ng-repeat="item in conversiones.valores" data-content="<img src={{item.imagen}}>{{item.nombre}}" ng-value=item.nombre
-                    value='USD'></option>
-            </select></div>
-          <div class="col-md-4"></div>
+  <body ng-controller="culturaController">
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#" >Cultura CDMX</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <li id="homeb"><a href="#" onclick="view('home')">Home</a></li>
+              <li id="catb"><a href="#" onclick="view('catalogo')">Catálogo</a></li> 
+            </ul>
+          </div>
+        </nav>
+      <div id="home">
+        <div id="video"></div>
+        <div id="test1"></div>
       </div>
-      <div class="row" id="menu_checkbox">
-          <div class="col-md-4"></div>
-          <div class="col-md-4">
-            <label  ng-repeat="item in conversiones.valores" class="checkbox-inline"><input type="checkbox" ng-model="item.convert" ng-click="calcular(valor,original)">{{item.nombre}}</label>
+      <div id="catalogo">
+          <!--<div id="buscador"></div>
+          <button id="search" type="button" class="btn btn-default" aria-label="Left Align" >
+              <img src="images/seach.png">
+            </button>-->
+          <div id="actividades">
+            <div ng-repeat="item in actividades">
+                    <div class="row">
+                      <div class="col-md-4"></div>
+                      <div class="col-md-4">{{item.nombre}}</div>
+                      <div class="col-md-4"></div>
+                  </div>
+                  <hr>
               </div>
           </div>
-          <div class="col-md-2"></div>
       </div>
-      <br>
-      <div ng-repeat="item in conversiones.resultado">
-            <div class="row">
-              <div class="col-md-4"></div>
-              <div class="col-md-4"><div class="col-md-2"><img ng-src={{item.imagen}}></div><div class="col-md-4"><label>{{item.nombre}}</label></div>
-                  <div class="col-md-6">{{item.valor}}</div></div>
-              <div class="col-md-4"></div>
-          </div>
-          <hr>
-      </div>
-    <div class="footer">
-      <div class="container">
-      </div>
-    </div>
-          </body>
+  </body>
+  <script>
+      var collapse=true;
+      function view(s){
+          if(s=="home"){
+              $("#home").css("visibility","visible");
+              $('#homeb').css("background","#ca5290");
+              $('#catb').css("background","#29767e");
+              $("#catalogo").css("visibility","hidden");
+          }else{
+             $("#home").css("visibility","hidden");
+             $('#catb').css("background","#ca5290");
+            $('#homeb').css("background","#29767e");
+             $("#catalogo").css("visibility","visible");
+          }
+      }
+      /*$("#search").click(function(){
+          if(collapse){
+              $( "#buscador" ).animate({
+            top: "7%",
+              }, 1000);
+              $( "#search" ).animate({
+                top: "27%",
+              }, 1000);
+              collapse=false;
+          }else{
+              $( "#buscador" ).animate({
+            top: "-20%",
+              }, 1000);
+              $( "#search" ).animate({
+                top: "7%",
+              }, 1000);
+              collapse=true;
+        }
+      });*/
+  </script>
 </html>

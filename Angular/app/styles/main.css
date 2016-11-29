@@ -1,30 +1,66 @@
 body{
     overflow-x: hidden;
     overflow-y: scroll;
+    background: #D6C29D;
+    
 }
-#valor {
-    height:45px;
-    border: 0px solid;
-    border-radius:5px;
-    text-align: center;
+
+#catalogo {
+    visibility: hidden;
 }
-h3 {
+.navbar{
+    background: #29767e ;
     color:white;
 }
-.navbar {
-    background:#7FAB79;
-    margin-bottom: 0;
+#homeb{
+    background: #ca5290;
 }
-.jumbotron{
-    background: #D4E3AD;
-}
-input[type=checkbox] {
-  transform: scale(1.5);
-}
-#menu_checkbox{
-    margin-top:-3%;
-    padding-top:2%;
-    padding-bottom:2%;
+#homeb a,#catb a{
     color:white;
-    background:#88AB53;
+}
+#hea a{
+    color:white;
+}
+#home{
+    position:relative;
+    top: 10%;
+    left:15vmax;
+}
+#video{
+    width:70vmax;
+    height:70vmin;
+}
+.mainb{
+    margin-top:2%;
+    width:70vmax;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    color:white;
+    font-size: 16px;
+}
+.b1 {
+    background: #29767e;
+}
+.b2 {
+    background: #10968d;
+}
+.b3 {
+    background: #644870;
+}
+.b4 {
+    background:  #87123c;
+}
+.b5 {
+    background:  #ca5290;
+}
+#search{
+    position: absolute;
+    top:7%;
+}
+#buscador{
+    position: absolute;
+    background:#10968d;
+    width:100%;
+    height:20%;
+    top:-20%;
 }
