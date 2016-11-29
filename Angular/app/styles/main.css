@@ -7,10 +7,10 @@ body{
 svg {
     position: absolute;
     top:15vh;;
-    left:15vmax;
     height:70vmin;
-    width: 70vmin;
+    width: 70vmax;
     border: 1px solid lightgray;
+    background:rgba(0,0,0,.25);
 }
 #catalogo {
     visibility: hidden;
