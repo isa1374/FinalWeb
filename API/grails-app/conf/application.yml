@@ -32,11 +32,7 @@ grails:
         disable:
             accept:
                 header:
-                    userAgents:
-                        - Gecko
-                        - WebKit
-                        - Presto
-                        - Trident
+                    userAgents: []
         types:
             json:
               - application/json

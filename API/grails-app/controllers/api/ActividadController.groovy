@@ -4,7 +4,6 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 import grails.rest.RestfulController
-
 @Secured(['ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class ActividadController {

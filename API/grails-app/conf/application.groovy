@@ -26,8 +26,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 	[pattern: '/api/**',         filters: 'JOINED_FILTERS,-anonymousAuthenticationFilter,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter']
 ]
 
-
-
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'api.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'api.UserRole'

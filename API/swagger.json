@@ -1,0 +1,127 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API Cultura",
+        "description": "Obtener actividades culturales para proyecto final de web",
+        "version": "1.0.0"
+    },
+    "host": "localhost:8080",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/activas": {
+            "get": {
+                "summary": "Actividades activas",
+                "description": "Este endpoint devuelve las actividades activas\n",
+                "tags": [
+                    "Actividad"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Arreglo de actividades",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Actividad"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/lugares": {
+            "get": {
+                "summary": "Información lugares",
+                "description": "Este endpoint devuelve la información completa de los lugares registrados\n",
+                "tags": [
+                    "Lugar"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Arreglo de lugares",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Lugar"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Actividad": {
+            "type": "object",
+            "properties": {
+                "nombre": {
+                    "type": "string"
+                },
+                "fecha": {
+                    "type": "string"
+                },
+                "horario": {
+                    "type": "string"
+                },
+                "programa": {
+                    "type": "string"
+                },
+                "tipo": {
+                    "type": "string"
+                },
+                "publico": {
+                    "type": "string"
+                },
+                "lugar": {
+                    "type": "string"
+                }
+            }
+        },
+        "Lugar": {
+            "type": "object",
+            "properties": {
+                "nombre": {
+                    "type": "string"
+                },
+                "direccion": {
+                    "type": "string"
+                },
+                "municipio": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

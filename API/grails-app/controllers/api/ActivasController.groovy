@@ -4,12 +4,14 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 import grails.converters.JSON
-
+import com.github.rahulsom.swaggydoc.*
+import com.wordnik.swagger.annotations.*
+import grails.converters.*;
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN'])
+@Api(value="Actividades activas")
 class ActivasController {
-
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+     @ApiOperation(value = 'Listar actividades activas', httpMethod = "GET")
 
     def consultar() {
         def act1=Actividad.where{
