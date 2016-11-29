@@ -18,8 +18,13 @@ Isabel García Pérez A01331405
     <script src="scripts/bootstrap.js"></script>
     <script src="scripts/bootstrap-select.js"></script>
     <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="scripts/collide.js"></script>
+      <script type="text/javascript" src="scripts/z.collide.js"></script>
+        <style>
+          .ball { fill:steelblue;stroke:black}
+          .wire {stroke:black;stroke-widh:1;fill:none}
+        </style>
      <script>
      document.addEventListener("DOMContentLoaded", function () {
          // Create a popcorn instance by calling the Vimeo player plugin
@@ -107,7 +112,7 @@ Isabel García Pérez A01331405
           </div>
         </nav>
       <div id="home">
-          
+         
         <div id="video"></div>
         <div id="test1"></div>
       </div>
@@ -316,6 +321,9 @@ Isabel García Pérez A01331405
               </div>
           </div>
   </body>
+    <footer>
+         <script type="text/javascript" src="scripts/zapp.js"></script>
+    </footer>
     <script>
       var collapse=true;
       function view(s){
