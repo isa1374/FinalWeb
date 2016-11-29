@@ -32,7 +32,7 @@ Isabel García Pérez A01331405
             start:4,
             end:10,
             onStart: function( options ) {
-              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b5'>Actividades Bellas Artes</button>";
+              document.getElementById( "test1" ).innerHTML="<a onclick='bellas()' class='btn mainb b5'>Actividades Bellas Artes</a>";
             },
             onEnd: function( options ) {
              document.getElementById( "test1" ).innerHTML = "";
@@ -42,7 +42,7 @@ Isabel García Pérez A01331405
             start: 10,
             end:17,
             onStart: function( options ) {
-              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b1'>Actividades Castillo de Chapultepec</button>";
+              document.getElementById( "test1" ).innerHTML="<a type=button onclick='castillo()' class='btn mainb b1'>Actividades Castillo de Chapultepec</a>";
             },
             onEnd: function( options ) {
              document.getElementById( "test1" ).innerHTML = "";
@@ -52,7 +52,7 @@ Isabel García Pérez A01331405
             start: 17,
             end:25,
             onStart: function( options ) {
-              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b2'>Actividades musicales</button>";
+              document.getElementById( "test1" ).innerHTML="<a onclick='musical()' class='btn mainb b2'>Actividades musicales</a>";
             },
             onEnd: function( options ) {
              document.getElementById( "test1" ).innerHTML = "";
@@ -62,7 +62,7 @@ Isabel García Pérez A01331405
             start: 25,
             end:32,
             onStart: function( options ) {
-              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b3'>Actividades Museo Soumaya</button>";
+              document.getElementById( "test1" ).innerHTML="<a onclick='soumaya()' class='btn mainb b3'>Actividades Museo Soumaya</a>";
             },
             onEnd: function( options ) {
              document.getElementById( "test1" ).innerHTML = "";
@@ -72,7 +72,7 @@ Isabel García Pérez A01331405
             start:32,
             end:43,
             onStart: function( options ) {
-              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b4'>Actividades Museo de Antropología</button>";
+              document.getElementById( "test1" ).innerHTML="<a  onclick='antro()' class='btn mainb b4'>Actividades Museo de Antropología</a>";
             },
             onEnd: function( options ) {
              document.getElementById( "test1" ).innerHTML = "";
@@ -82,10 +82,10 @@ Isabel García Pérez A01331405
             start:43,
             end:60,
             onStart: function( options ) {
-              document.getElementById( "test1" ).innerHTML="<button class='btn mainb b5'>Actividades danza</button>";
+              document.getElementById( "test1" ).innerHTML="<a onclick='danza()' class='btn mainb b5'>Actividades danza</a>";
             },
             onEnd: function( options ) {
-             document.getElementById( "test1" ).innerHTML="<button class='btn mainb b5'>Actividades danza</button>";
+             document.getElementById( "test1" ).innerHTML="<a onclick='danza()' class='btn mainb b5'>Actividades danza</a>";
            }
         });
         pop.play();
@@ -108,22 +108,207 @@ Isabel García Pérez A01331405
         <div id="video"></div>
         <div id="test1"></div>
       </div>
-      <div id="catalogo">
-          <!--<div id="buscador"></div>
-          <button id="search" type="button" class="btn btn-default" aria-label="Left Align" >
-              <img src="images/seach.png">
-            </button>-->
-          <div id="actividades">
-            <div ng-repeat="item in actividades">
-                    <div class="row">
-                      <div class="col-md-4"></div>
-                      <div class="col-md-4">{{item.nombre}}</div>
-                      <div class="col-md-4"></div>
-                  </div>
+      <div id="catalogo" class="display">
+            <div ng-repeat='item in actividades'>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-10'><label>Nombre:</label> {{item.nombre}}</div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Fecha:</label> {{item.fecha}}</div>
+                      <div class='col-md-4'><label>Horario:</label> {{item.horario}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Programa:</label> {{item.programa}}</div>
+                      <div class='col-md-4'><label>Tipo:</label> {{item.tipo}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Público:</label> {{item.publico}}</div>
+                      <div class='col-md-4'><label>Lugar:</label> {{item.lugar}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
                   <hr>
               </div>
-          </div>
       </div>
+      <div id="bellasA" class="display">
+            <div ng-repeat='item in actividades'>
+                <div ng-if='item.lugar=="Palacio de Bellas Artes"'>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-10'><label>Nombre:</label> {{item.nombre}}</div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Fecha:</label> {{item.fecha}}</div>
+                      <div class='col-md-4'><label>Horario:</label> {{item.horario}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Programa:</label> {{item.programa}}</div>
+                      <div class='col-md-4'><label>Tipo:</label> {{item.tipo}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Público:</label> {{item.publico}}</div>
+                      <div class='col-md-4'><label>Lugar:</label> {{item.lugar}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                  <hr>
+                </div>
+              </div>
+          </div>
+      <div id="castillo" class="display">
+            <div ng-repeat='item in actividades'>
+                <div ng-if='item.lugar=="Castillo de Chapultepec"'>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-10'><label>Nombre:</label> {{item.nombre}}</div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Fecha:</label> {{item.fecha}}</div>
+                      <div class='col-md-4'><label>Horario:</label> {{item.horario}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Programa:</label> {{item.programa}}</div>
+                      <div class='col-md-4'><label>Tipo:</label> {{item.tipo}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Público:</label> {{item.publico}}</div>
+                      <div class='col-md-4'><label>Lugar:</label> {{item.lugar}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                  <hr>
+                </div>
+              </div>
+          </div>
+      <div id="soumaya" class="display">
+            <div ng-repeat='item in actividades'>
+                <div ng-if='item.lugar=="Museo Soumaya"'>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-10'><label>Nombre:</label> {{item.nombre}}</div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Fecha:</label> {{item.fecha}}</div>
+                      <div class='col-md-4'><label>Horario:</label> {{item.horario}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Programa:</label> {{item.programa}}</div>
+                      <div class='col-md-4'><label>Tipo:</label> {{item.tipo}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Público:</label> {{item.publico}}</div>
+                      <div class='col-md-4'><label>Lugar:</label> {{item.lugar}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                  <hr>
+                </div>
+              </div>
+          </div>
+      <div id="antro" class="display">
+            <div ng-repeat='item in actividades'>
+                <div ng-if='item.lugar=="Museo de Antropología"'>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-10'><label>Nombre:</label> {{item.nombre}}</div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Fecha:</label> {{item.fecha}}</div>
+                      <div class='col-md-4'><label>Horario:</label> {{item.horario}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Programa:</label> {{item.programa}}</div>
+                      <div class='col-md-4'><label>Tipo:</label> {{item.tipo}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Público:</label> {{item.publico}}</div>
+                      <div class='col-md-4'><label>Lugar:</label> {{item.lugar}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                  <hr>
+                </div>
+              </div>
+          </div>
+      <div id="danza" class="display">
+            <div ng-repeat='item in actividades'>
+                <div ng-if='item.tipo=="danza"'>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-10'><label>Nombre:</label> {{item.nombre}}</div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Fecha:</label> {{item.fecha}}</div>
+                      <div class='col-md-4'><label>Horario:</label> {{item.horario}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Programa:</label> {{item.programa}}</div>
+                      <div class='col-md-4'><label>Tipo:</label> {{item.tipo}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Público:</label> {{item.publico}}</div>
+                      <div class='col-md-4'><label>Lugar:</label> {{item.lugar}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                  <hr>
+                </div>
+              </div>
+          </div>
+      <div id="musical" class="display">
+            <div ng-repeat='item in actividades'>
+                <div ng-if='item.tipo=="musical"'>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-10'><label>Nombre:</label> {{item.nombre}}</div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Fecha:</label> {{item.fecha}}</div>
+                      <div class='col-md-4'><label>Horario:</label> {{item.horario}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Programa:</label> {{item.programa}}</div>
+                      <div class='col-md-4'><label>Tipo:</label> {{item.tipo}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-2'></div>
+                      <div class='col-md-4'><label>Público:</label> {{item.publico}}</div>
+                      <div class='col-md-4'><label>Lugar:</label> {{item.lugar}}</div>
+                      <div class='col-md-2'></div>
+                    </div>
+                  <hr>
+                </div>
+              </div>
+          </div>
   </body>
   <script>
       var collapse=true;
@@ -133,13 +318,99 @@ Isabel García Pérez A01331405
               $('#homeb').css("background","#ca5290");
               $('#catb').css("background","#29767e");
               $("#catalogo").css("visibility","hidden");
+              $("bellasA").css("visibility","hidden");
+              $("castillo").css("visibility","hidden");
+              $("#soumaya").css("visibility","hidden");
+              $("#antro").css("visibility","hidden");
+              $("#danza").css("visibility","hidden");
+              $("#musical").css("visibility","hidden");
+              
           }else{
              $("#home").css("visibility","hidden");
              $('#catb').css("background","#ca5290");
             $('#homeb').css("background","#29767e");
              $("#catalogo").css("visibility","visible");
+              $("#bellasA").css("visibility","hidden");
+              $("#castillo").css("visibility","hidden");
+              $("#soumaya").css("visibility","hidden");
+          $("#antro").css("visibility","hidden");
+          $("#danza").css("visibility","hidden");
+               $("#musical").css("visibility","hidden");
           }
       }
+      function bellas(){
+          $("#home").css("visibility","hidden");
+          $('#catb').css("background","#ca5290");
+          $('#homeb').css("background","#29767e");
+          $("#catalogo").css("visibility","hidden");
+          $("#bellasA").css("visibility","visible");
+          $("#castillo").css("visibility","hidden");
+          $("#soumaya").css("visibility","hidden");
+          $("#antro").css("visibility","hidden");
+          $("#danza").css("visibility","hidden");
+          $("#musical").css("visibility","hidden");
+      }
+      function castillo(){
+          $("#home").css("visibility","hidden");
+          $('#catb').css("background","#ca5290");
+          $('#homeb').css("background","#29767e");
+          $("#catalogo").css("visibility","hidden");
+          $("#bellasA").css("visibility","hidden");
+          $("#castillo").css("visibility","visible");
+          $("#soumaya").css("visibility","hidden");
+          $("#antro").css("visibility","hidden");
+          $("#danza").css("visibility","hidden");
+          $("#musical").css("visibility","hidden");
+      }
+      function soumaya(){
+          $("#home").css("visibility","hidden");
+          $('#catb').css("background","#ca5290");
+          $('#homeb').css("background","#29767e");
+          $("#catalogo").css("visibility","hidden");
+          $("#bellasA").css("visibility","hidden");
+          $("#castillo").css("visibility","hidden");
+          $("#soumaya").css("visibility","visible");
+          $("#antro").css("visibility","hidden");
+          $("#danza").css("visibility","hidden");
+          $("#musical").css("visibility","hidden");
+      }
+      function antro(){
+          $("#home").css("visibility","hidden");
+          $('#catb').css("background","#ca5290");
+          $('#homeb').css("background","#29767e");
+          $("#catalogo").css("visibility","hidden");
+          $("#bellasA").css("visibility","hidden");
+          $("#castillo").css("visibility","hidden");
+          $("#soumaya").css("visibility","hidden");
+          $("#antro").css("visibility","visible");
+          $("#danza").css("visibility","hidden");
+          $("#musical").css("visibility","hidden");
+      }
+      function danza(){
+          $("#home").css("visibility","hidden");
+          $('#catb').css("background","#ca5290");
+          $('#homeb').css("background","#29767e");
+          $("#catalogo").css("visibility","hidden");
+          $("#bellasA").css("visibility","hidden");
+          $("#castillo").css("visibility","hidden");
+          $("#soumaya").css("visibility","hidden");
+          $("#antro").css("visibility","hidden");
+          $("#danza").css("visibility","visible");
+          $("#musical").css("visibility","hidden");
+      }
+      function musical(){
+          $("#home").css("visibility","hidden");
+          $('#catb').css("background","#ca5290");
+          $('#homeb').css("background","#29767e");
+          $("#catalogo").css("visibility","hidden");
+          $("#bellasA").css("visibility","hidden");
+          $("#castillo").css("visibility","hidden");
+          $("#soumaya").css("visibility","hidden");
+          $("#antro").css("visibility","hidden");
+          $("#danza").css("visibility","hidden");
+          $("#musical").css("visibility","visible");
+      }
+      
       /*$("#search").click(function(){
           if(collapse){
               $( "#buscador" ).animate({
